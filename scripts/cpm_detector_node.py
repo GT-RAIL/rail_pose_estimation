@@ -94,101 +94,70 @@ class CPM(object):
         obj_arr.header = header
         for person in people:
             msg = Keypoints()
-            for part in self.part_str:
-                # create a dictionary of part_y part_x and initialize the message with keyword init?
             nose = person.get('nose', [-1, -1])
-            nose_y = nose[0]
-            nose_x = nose[1]
+            msg.nose_y = nose[0]
+            msg.nose_x = nose[1]
+
             neck = person.get('neck', [-1, -1])
-            neck_y = neck[0]
-            neck_x = neck[1]
+            msg.neck_y = neck[0]
+            msg.neck_x = neck[1]
+
             right_shoulder = person.get('right_shoulder', [-1, -1])
-            right_shoulder_y = right_shoulder[0]
-            right_shoulder_x = right_shoulder[1]
+            msg.right_shoulder_y = right_shoulder[0]
+            msg.right_shoulder_x = right_shoulder[1]
             left_shoulder = person.get('left_shoulder', [-1, -1])
-            left_shoulder_y = left_shoulder[0]
-            left_shoulder_x = left_shoulder[1]
+            msg.left_shoulder_y = left_shoulder[0]
+            msg.left_shoulder_x = left_shoulder[1]
+
             right_elbow = person.get('right_elbow', [-1, -1])
-            right_elbow_y = right_elbow[0]
-            right_elbow_x = right_elbow[1]
+            msg.right_elbow_y = right_elbow[0]
+            msg.right_elbow_x = right_elbow[1]
             left_elbow = person.get('left_elbow', [-1, -1])
-            left_elbow_y = left_elbow[0]
-            left_elbow_x = left_elbow[1]
+            msg.left_elbow_y = left_elbow[0]
+            msg.left_elbow_x = left_elbow[1]
+
             right_wrist = person.get('right_wrist', [-1, -1])
-            right_wrist_y = right_wrist[0]
-            right_wrist_x = right_wrist[1]
+            msg.right_wrist_y = right_wrist[0]
+            msg.right_wrist_x = right_wrist[1]
             left_wrist = person.get('left_wrist', [-1, -1])
-            left_wrist_y = left_wrist[0]
-            left_wrist_x = left_wrist[1]
+            msg.left_wrist_y = left_wrist[0]
+            msg.left_wrist_x = left_wrist[1]
+
+            Lhip = person.get('Lhip', [-1, -1])
+            msg.left_hip_y = Lhip[0]
+            msg.left_hip_x = Lhip[1]
+            Rhip = person.get('Rhip', [-1, -1])
+            msg.right_hip_y = Rhip[0]
+            msg.right_hip_x = Rhip[1]
+
             left_eye = person.get('left_eye', [-1, -1])
-            left_eye_y = left_eye[0]
-            left_eye_x = left_eye[1]
+            msg.left_eye_y = left_eye[0]
+            msg.left_eye_x = left_eye[1]
             right_eye = person.get('right_eye', [-1, -1])
-            right_eye_y = right_eye[0]
-            right_eye_x = right_eye[1]
-            left_eye = person.get('left_eye', [-1, -1])
-            left_eye_y = left_eye[0]
-            left_eye_x = left_eye[1]
-            right_eye = person.get('right_eye', [-1, -1])
-            right_eye_y = right_eye[0]
-            right_eye_x = right_eye[1]
+            msg.right_eye_y = right_eye[0]
+            msg.right_eye_x = right_eye[1]
 
-            msg.eye_vec_x = self.vec_between(left_eye_x, right_eye_x)
-            msg.eye_vec_y = self.vec_between(left_eye_y, right_eye_y)
+            right_ear = person.get('right_ear', [-1, -1])
+            msg.right_ear_y = right_ear[0]
+            msg.right_ear_x = right_ear[1]
+            left_ear = person.get('left_ear', [-1, -1])
+            msg.left_ear_y = left_ear[0]
+            msg.left_ear_x = left_ear[1]
 
-            nose_vec_x = self.vec_between(nose_x, neck_x)
-            nose_vec_y = self.vec_between(nose_y, neck_y)
-            msg.nose_vec_x = nose_vec_x
-            msg.nose_vec_y = nose_vec_y
+            Rkne = person.get('Rkne', [-1, -1])
+            msg.right_knee_y = Rkne[0]
+            msg.right_knee_x = Rkne[1]
+            Lkne = person.get('Lkne', [-1, -1])
+            msg.left_knee_y = Lkne[0]
+            msg.left_knee_x = Lkne[1]
 
-            right_eye_vec_x = self.vec_between(right_eye_x, neck_x)
-            right_eye_vec_y = self.vec_between(right_eye_y, neck_y)
-            left_eye_vec_x = self.vec_between(left_eye_x, neck_x)
-            left_eye_vec_y = self.vec_between(left_eye_y, neck_y)
-            msg.right_eye_angle = self.angle_between([right_eye_vec_x, right_eye_vec_y], [nose_vec_x, nose_vec_y])
-            msg.left_eye_angle = self.angle_between([left_eye_vec_x, left_eye_vec_y], [nose_vec_x, nose_vec_y])
+            Rank = person.get('Rank', [-1, -1])
+            msg.right_ankle_y = Rank[0]
+            msg.right_ankle_x = Rank[1]
+            Lank = person.get('Lank', [-1, -1])
+            msg.left_ankle_y = Lank[0]
+            msg.left_ankle_x = Lank[1]
 
-            left_elbow_vec_x = self.vec_between(left_elbow_x, left_shoulder_x)
-            left_elbow_vec_y = self.vec_between(left_elbow_y, left_shoulder_y)
-            left_to_right_shoulder_x = self.vec_between(right_shoulder_x, left_shoulder_x)
-            left_to_right_shoulder_y = self.vec_between(right_shoulder_y, left_shoulder_y)
-            msg.left_shoulder_angle = self.angle_between([left_elbow_vec_x, left_elbow_vec_y],
-                                                [left_to_right_shoulder_x, left_to_right_shoulder_y])
-            left_wrist_vec_x = self.vec_between(left_wrist_x, left_elbow_x)
-            left_wrist_vec_y = self.vec_between(left_wrist_y, left_elbow_y)
-            msg.left_elbow_angle = self.angle_between([left_wrist_vec_x, left_wrist_vec_y],
-                                             [-1 * left_elbow_vec_x, -1 * left_elbow_vec_y])
-            # Want distance for shoulder -> wrist. also want angle
-            left_arm_vec_x = self.vec_between(left_wrist_x, left_shoulder_x)
-            left_arm_vec_y = self.vec_between(left_wrist_y, left_shoulder_y)
-            msg.left_wrist_angle = self.angle_between([left_arm_vec_x, left_arm_vec_y],
-                                                      [left_to_right_shoulder_x, left_to_right_shoulder_y])
-            msg.left_arm_vec_x = left_arm_vec_x
-            msg.left_arm_vec_y = left_arm_vec_y
-
-            right_to_left_shoulder_vec_x = self.vec_between(left_shoulder_x, right_shoulder_x)
-            right_to_left_shoulder_vec_y = self.vec_between(left_shoulder_y, right_shoulder_y)
-            msg.shoulder_vec_x = right_to_left_shoulder_vec_x
-            msg.shoulder_vec_y = right_to_left_shoulder_vec_y
-
-            right_elbow_vec_x = self.vec_between(right_elbow_x, right_shoulder_x)
-            right_elbow_vec_y = self.vec_between(right_elbow_y, right_shoulder_y)
-            msg.right_shoulder_angle = self.angle_between([right_elbow_vec_x, right_elbow_vec_y],
-                                                 [right_to_left_shoulder_vec_x, right_to_left_shoulder_vec_y])
-            right_wrist_vec_x = self.vec_between(right_wrist_x, right_elbow_x)
-            right_wrist_vec_y = self.vec_between(right_wrist_y, right_elbow_y)
-            msg.right_elbow_angle = self.angle_between([right_wrist_vec_x, right_wrist_vec_y],
-                                              [-1 * right_elbow_vec_x, -1 * right_elbow_vec_y])
-            # Want distance & angle for shoulder -> wrist
-            right_arm_vec_x = self.vec_between(right_wrist_x, right_shoulder_x)
-            right_arm_vec_y = self.vec_between(right_wrist_y, right_shoulder_y)
-            msg.right_wrist_angle = self.angle_between([right_arm_vec_x, right_arm_vec_y],
-                                                       [right_to_left_shoulder_vec_x, right_to_left_shoulder_vec_y])
-            msg.right_arm_vec_x = right_arm_vec_x
-            msg.right_arm_vec_y = right_arm_vec_y
-
-            msg.neck_x = neck_x
-            msg.neck_y = neck_y
             obj_arr.people.append(msg)
 
         self.object_pub.publish(obj_arr)
