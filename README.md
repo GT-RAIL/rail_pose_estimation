@@ -1,26 +1,6 @@
-### What is published?
-This node will publish /rail_cpm/poses, which is a list of people found in the scene. Each pose/person object will have 2 points for every keypoint, the Y and X coordinate. So the pose object will contain "nose_y, nose_x, neck_y, neck_x, right_shoulder_y, right_shoulder_x" and so on. If the keypoint is not found for that person, it is returned as -1.0. It is important to note that (Y, X) corresponds to (Column, Row) in the image. So Y is the number of pixels from the left border, X is the number from the top border. For a visualization, run with the debug flag and run:
-```
-rosrun image_view image_view image:=/rail_cpm/debug/keypoint_image
-```
-
-### Running:
-To actually run the node, launch with:
-```
-roslaunch rail_cpm detector.launch
-```
-optional flags include 
-  * 'debug' (true or false)
-  * 'image_sub_topic_name' which is /kinect/qhd/image_color_rect by default.
-
-
 ### Warnings:
 These only really matter for human interpretability, but they should be noted before I forget. First, as mentioned above: Y and X are flipped from how most people would interpret them. X is row (down) and Y is column (across). Second, points will gravitate to borders if somebody is too close. So instead of being 5px away from the edge, they'll just snap over. It looks like a division error somewhere, I'll try to fix it at some point. But for now just be aware of it!
-
 For other questions, just reach out!
-
-# Warning:
-This repo is not going to be supported in the future. I have the official / supported package to: https://github.com/GT-RAIL/rail_face_detector. GT-RAIL's package will be supported and maintained, so please clone / use that one.
 
 # rail_pose_estimator
 Multi-person pose estimation node using caffe and python
@@ -28,6 +8,12 @@ Multi-person pose estimation node using caffe and python
 ## Two Minute Intro
 
 This detector uses [Caffe](http://caffe.berkeleyvision.org/) to perform pose estimation. It publishes poses for people found in images from a subscribed image topic. The pose estimator itself can be found here: https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation .
+
+Each pose/person object will have 2 points for every keypoint, the Y and X coordinate. So the pose object will contain "nose_y, nose_x, neck_y, neck_x, right_shoulder_y, right_shoulder_x" and so on. If the keypoint is not found for that person, it is returned as -1.0. It is important to note that (Y, X) corresponds to (Column, Row) in the image. So Y is the number of pixels from the left border, X is the number from the top border. For a visualization, run with the debug flag and run:
+```
+rosrun image_view image_view image:=/rail_pose_estimator_node/debug/poses_image
+```
+
 
 The message type coming back from the face detector is a Poses.msg which contains an array of Keypoints.msg objects. Each Keypoints.msg has:
 ```
