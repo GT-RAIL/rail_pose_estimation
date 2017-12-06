@@ -147,8 +147,12 @@ class PoseMachine:
                                           for I in range(len(startend))])
 
                         score_midpts = np.multiply(vec_x, vec[0]) + np.multiply(vec_y, vec[1])
-                        score_with_dist_prior = sum(score_midpts) / len(score_midpts) + min(
-                            0.5 * input_image.shape[0] / norm - 1, 0)
+                        #Silva divide by zero fix
+                        if norm == 0:
+                            score_with_dist_prior = sum(score_midpts) / len(score_midpts)
+                        else:
+                            score_with_dist_prior = sum(score_midpts) / len(score_midpts) + min(
+                                0.5 * input_image.shape[0] / norm - 1, 0)
                         criterion1 = len(np.nonzero(score_midpts > param['thre2'])[0]) > 0.8 * len(score_midpts)
                         criterion2 = score_with_dist_prior > 0
                         if criterion1 and criterion2:
