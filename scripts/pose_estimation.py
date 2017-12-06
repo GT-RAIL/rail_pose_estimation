@@ -137,7 +137,9 @@ class PoseMachine:
                         vec = np.subtract(candB[j][:2], candA[i][:2])
                         norm = math.sqrt(vec[0] * vec[0] + vec[1] * vec[1])
                         vec = np.divide(vec, norm)
-
+                        # Silva divide by zero fix?
+                        if norm == 0:
+                            continue
                         startend = zip(np.linspace(candA[i][0], candB[j][0], num=mid_num),
                                        np.linspace(candA[i][1], candB[j][1], num=mid_num))
 
@@ -147,7 +149,7 @@ class PoseMachine:
                                           for I in range(len(startend))])
 
                         score_midpts = np.multiply(vec_x, vec[0]) + np.multiply(vec_y, vec[1])
-                        #Silva divide by zero fix
+                        # Silva divide by zero fix
                         if norm == 0:
                             score_with_dist_prior = sum(score_midpts) / len(score_midpts)
                         else:
