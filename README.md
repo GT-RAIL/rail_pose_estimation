@@ -94,7 +94,7 @@ Wrapper for object detection through ROS services.  Relevant services and parame
 * **Topics**
   * `rail_pose_estimator_node/poses` ([rail_pose_estimator_node/poses](msg/Poses.msg))
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Topic with face detections performed in the background by running on images as they come in the subscriber.
-  * `detector_node/debug/poses_image` ([rail_pose_estimator_node/debug/object_image])
+  * `rail_pose_estimator_node/debug/poses_image` (Image)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Topic with object detections visualized on incoming images as they come in from the subscriber. Only published if `debug:=true`.
 * **Parameters**
   * `image_sub_topic_name` (`string`, default: "/kinect/qhd/image_color_rect")
@@ -110,3 +110,5 @@ Simply run the launch file to bring up all of the package's functionality:
 ```
 roslaunch rail_pose_estimator detector.launch
 ```
+
+Debug mode and compressed image mode are off by default, and the default image stream is the Kinect QHD stream.
