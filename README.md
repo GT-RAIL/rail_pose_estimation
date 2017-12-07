@@ -16,6 +16,7 @@ rosrun image_view image_view image:=/rail_pose_estimator_node/debug/poses_image
 
 You should see something like this:
 ![Pose estimator visualization](poses.gif)
+
 The message type coming back from the face detector is a Poses.msg which contains an array of Keypoints.msg objects. Each Keypoints.msg has:
 ```
 float32 neck_x                  # x coord of neck
