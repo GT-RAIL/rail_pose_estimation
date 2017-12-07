@@ -7,14 +7,15 @@ Multi-person pose estimation node using caffe and python
 
 ## Two Minute Intro
 
-This detector uses [Caffe](http://caffe.berkeleyvision.org/) to perform pose estimation. It publishes poses for people found in images from a subscribed image topic. The pose estimator itself can be found here: https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation .
+This detector uses [Caffe](http://caffe.berkeleyvision.org/) to perform pose estimation. It publishes poses for people found in images from a subscribed image topic. The pose estimator itself can be found here: https://github.com/ZheC/Realtime_Multi-Person_Pose_Estimation . 
 
 Each pose/person object will have 2 points for every keypoint, the Y and X coordinate. So the pose object will contain "nose_y, nose_x, neck_y, neck_x, right_shoulder_y, right_shoulder_x" and so on. If the keypoint is not found for that person, it is returned as -1.0. It is important to note that (Y, X) corresponds to (Column, Row) in the image. So Y is the number of pixels from the left border, X is the number from the top border. For a visualization, run with the debug flag and run:
 ```
 rosrun image_view image_view image:=/rail_pose_estimator_node/debug/poses_image
 ```
 
-
+You should see something like this:
+![Pose estimator visualization](poses.gif)
 The message type coming back from the face detector is a Poses.msg which contains an array of Keypoints.msg objects. Each Keypoints.msg has:
 ```
 float32 neck_x                  # x coord of neck
