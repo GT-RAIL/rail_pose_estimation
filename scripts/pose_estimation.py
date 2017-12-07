@@ -136,10 +136,10 @@ class PoseMachine:
                     for j in range(nB):
                         vec = np.subtract(candB[j][:2], candA[i][:2])
                         norm = math.sqrt(vec[0] * vec[0] + vec[1] * vec[1])
-                        vec = np.divide(vec, norm)
                         # Silva divide by zero fix?
                         if norm == 0:
                             continue
+                        vec = np.divide(vec, norm)
                         startend = zip(np.linspace(candA[i][0], candB[j][0], num=mid_num),
                                        np.linspace(candA[i][1], candB[j][1], num=mid_num))
 
