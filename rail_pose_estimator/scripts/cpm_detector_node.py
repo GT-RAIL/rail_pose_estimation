@@ -10,7 +10,7 @@ import rospy
 import numpy as np
 from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image, CompressedImage
-from rail_pose_estimator.msg import Keypoints, Poses
+from rail_pose_estimation_msgs.msg import Keypoints, Poses
 
 import pose_estimation
 

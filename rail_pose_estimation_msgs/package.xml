@@ -1,0 +1,19 @@
+<package format="2">
+  <name>rail_pose_estimation_msgs</name>
+  <version>1.0.1</version>
+  <description>
+    This package provides multi-person pose estimation via Caffe.
+  </description>
+  <maintainer email="asilva9@gatech.edu">Andrew Silva</maintainer>
+  <url type="website">https://github.com/GT-RAIL/rail_pose_estimation</url>
+  <license>MIT</license>
+  <author>Andrew Silva</author>
+  <author>Siddhartha Banerjee</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>message_generation</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+</package>

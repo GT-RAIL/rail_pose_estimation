@@ -1,0 +1,20 @@
+<package format="2">
+  <name>rail_pose_estimator</name>
+  <version>1.0.1</version>
+  <description>
+    This package provides multi-person pose estimation via Caffe.
+  </description>
+  <maintainer email="asilva9@gatech.edu">Andrew Silva</maintainer>
+  <url type="website">https://github.com/GT-RAIL/rail_pose_estimation</url>
+  <license>See LICENSE in this folder</license>
+  <author>Andrew Silva</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rospy</depend>
+  <depend>cv_bridge</depend>
+  <depend>rail_pose_estimation_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+</package>
