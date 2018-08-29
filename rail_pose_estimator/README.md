@@ -20,7 +20,7 @@ rosrun image_view image_view image:=/rail_pose_estimator_node/debug/poses_image
 You should see something like this:
 ![Pose estimator visualization](poses.gif)
 
-The message type coming back from the face detector is a Poses.msg which contains an array of Keypoints.msg objects. Each Keypoints.msg has:
+The message type coming back from the face detector is a Poses.msg which contains an array of [Keypoints.msg](../rail_pose_estimation_msgs/msg/Keypoints.msg) objects. Each Keypoints.msg has:
 ```
 float32 neck_x                  # x coord of neck
 float32 neck_y                  # y coord of neck
@@ -96,9 +96,9 @@ roslaunch rail_pose_estimator detector.launch image_sub_topic_name:=/kinect/qhd/
 Wrapper for object detection through ROS services.  Relevant services and parameters are as follows:
 
 * **Topics**
-  * `rail_pose_estimator_node/poses` ([rail_pose_estimator_node/poses](msg/Poses.msg))
+  * `rail_pose_estimator_node/poses` ([rail_pose_estimator_node/poses](../rail_pose_estimation_msgs/msg/Poses.msg))
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Topic with face detections performed in the background by running on images as they come in the subscriber.
-  * `rail_pose_estimator_node/debug/poses_image` (Image)
+  * `rail_pose_estimator_node/debug/poses_image` (sensor_msgs/Image)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Topic with object detections visualized on incoming images as they come in from the subscriber. Only published if `debug:=true`.
 * **Parameters**
   * `image_sub_topic_name` (`string`, default: "/kinect/qhd/image_color_rect")
