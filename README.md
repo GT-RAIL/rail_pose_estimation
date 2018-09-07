@@ -1,5 +1,7 @@
 # RAIL (Human) Pose Estimation Metapackage
 
+[![Build Status](https://travis-ci.org/GT-RAIL/rail_pose_estimation.svg?branch=develop)](https://travis-ci.org/GT-RAIL/rail_pose_estimation)
+
 This repository contains nodes and packages that we use for human pose estimation. All methods of pose estimation publish poses in the message formats defined in [`rail_pose_estimation_msgs`](rail_pose_estimation_msgs/).
 
 **Note on Licensing**
