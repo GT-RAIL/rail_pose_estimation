@@ -1,6 +1,6 @@
 <package format="2">
   <name>rail_pose_estimator</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>
     This package provides multi-person pose estimation via Caffe.
   </description>

@@ -2,8 +2,8 @@
 Changelog for package rail_pose_estimation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.1 (2018-09-07)
+------------------
 * Create a separate package for the messages
 * Added a metapackage
 * Contributors: Siddhartha Banerjee, banerjs
